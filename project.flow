@@ -1,0 +1,36 @@
+{
+
+  luxe:{
+    window: {
+      width:960,
+      height:540,
+      title:'Dunjin Crul',
+      fullscreen:false,
+      resizable:false,
+      borderless:false
+    }
+  },
+
+  project : {
+    name : 'Dunjin Crul',
+    version : '0.0.1',
+    author : 'Rick Sheahan',
+
+    app : {
+      name : 'dunjincrul',
+      package : 'com.luxeengine.dunjincrul'
+    },
+
+    build : {
+      dependencies : {
+        luxe : '*',
+      }
+    },
+
+    files : {
+      assets : 'assets/'
+    }
+
+  }
+
+}

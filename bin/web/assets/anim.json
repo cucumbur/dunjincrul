@@ -1,0 +1,20 @@
+{
+    "walkup" : {
+        "frame_size":{ "x":"16", "y":"16" },
+        "frameset": ["1-4"],
+        "loop": "true",
+        "speed": "4"
+    },
+    "walkdown" : {
+        "frame_size":{ "x":"16", "y":"16" },
+        "frameset": ["9-12"],
+        "loop": "true",
+        "speed": "4"
+    },
+    "walkside" : {
+        "frame_size":{ "x":"16", "y":"16" },
+        "frameset": ["5-8"],
+        "loop": "true",
+        "speed": "4"
+    }
+}
