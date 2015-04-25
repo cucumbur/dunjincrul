@@ -1,5 +1,5 @@
 # My ignores
-.bin
+bin/
 dunjincrul.sublime-project
 dunjincrul.sublime-workspace
 
