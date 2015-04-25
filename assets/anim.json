@@ -16,5 +16,23 @@
         "frameset": ["5-8"],
         "loop": "true",
         "speed": "4"
+    },
+    "idleup" : {
+        "frame_size":{ "x":"16", "y":"16" },
+        "frameset": ["1"],
+        "loop": "true",
+        "speed": "1"
+    },
+    "idledown" : {
+        "frame_size":{ "x":"16", "y":"16" },
+        "frameset": ["9"],
+        "loop": "true",
+        "speed": "1"
+    },
+    "idleside" : {
+        "frame_size":{ "x":"16", "y":"16" },
+        "frameset": ["5"],
+        "loop": "true",
+        "speed": "1"
     }
 }
