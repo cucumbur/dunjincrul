@@ -1,9 +1,18 @@
 Maintenance:
   ☐ Get the readme to look nice on GitHub @low
-
+  ☐ add in some comments
+  ☐ Get the nice st3 project off github again
 Codebase:
   ☐ Make the base game loop
-  ☐ make a moveable character
+  ✔ make a moveable character @done (15-04-25 00:39)
+  ☐ Make the character sprite not animate when not moving
+    sort of done, i only have it resume to a default idle when i would prefer either pausing the animation or switching to one of several idles. use states?
+  ☐ make the character sprite not flip direction when walking up/down
+  ✔ Put the playerinput into a component @done (15-04-25 02:19)
+  ✔ Put the animation into a component @done (15-04-25 02:19)
+  ☐ Implement a tiled map thing
+    Either https://github.com/Dvergar/PyxelEdit-Map-Importer or tiled, maybe
+  ☐ start using states
 Design:
-  ☐ Get a placeholder character sprite
+  ✔ Get a placeholder character sprite @done (15-04-25 00:39)
   ☐ Make a placeholder main menu graphic
