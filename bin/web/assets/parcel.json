@@ -1,8 +1,0 @@
-{
-    "textures" : [
-        { "id" : "assets/characters/notlink.png" }
-    ],
-    "json" : [
-        { "id" : "assets/anim.json" }
-    ]
-}
