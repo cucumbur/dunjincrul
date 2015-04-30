@@ -1,6 +1,7 @@
 import luxe.Component;
 import luxe.Sprite;
 import luxe.Input;
+import luxe.States;
 
 // Component function: Make the attached entity respond to user input
 
@@ -9,10 +10,14 @@ class InputComponent extends Component {
 	var move_speed : Float = 100;
 	var sprite : Sprite;
 	var moving = 0;
+	var walkingMachine : States;
 
 	override function onadded() {
 		sprite = cast entity;
-		
+		setupStateMachine();
+
+		//Binding input to some predefined keys.
+		//Could generalize this, both to reconfigurable keys and non-human input
 		Luxe.input.bind_key('left', Key.left);
 		Luxe.input.bind_key('left', Key.key_a);
 
@@ -63,4 +68,14 @@ class InputComponent extends Component {
 		}
 	} //update
 
-} //Rotate
+	private function setupStateMachine(){
+		// walkingMachine = new States({name:'walkingstates'});
+		// walkingMachine.add(new State('walkingup'));
+		// walkingMachine.add(new State('walkingside'));
+		// walkingMachine.add(new State('walkingdown'));
+		// walkingMachine.add(new State('idle'));
+		// walkingMachine.set('idle');
+	}
+
+} //InputComponent
+

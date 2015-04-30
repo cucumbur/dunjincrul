@@ -1,7 +1,6 @@
 Maintenance:
-  ☐ Get the readme to look nice on GitHub @low
+  ✔ Get the readme to look nice on GitHub @low @done (15-04-25 19:16)
   ☐ add in some comments
-  ☐ Get the nice st3 project off github again
 Codebase:
   ☐ Make the base game loop
   ✔ make a moveable character @done (15-04-25 00:39)
@@ -13,6 +12,7 @@ Codebase:
   ☐ Implement a tiled map thing
     Either https://github.com/Dvergar/PyxelEdit-Map-Importer or tiled, maybe
   ☐ start using states
+  ☐ fix the stupid idle animation
 Design:
   ✔ Get a placeholder character sprite @done (15-04-25 00:39)
   ☐ Make a placeholder main menu graphic
