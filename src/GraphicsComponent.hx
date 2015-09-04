@@ -2,8 +2,9 @@ import luxe.Component;
 import luxe.Sprite;
 import luxe.Vector;
 import luxe.Entity;
-
-import luxe.Sprite;
+import luxe.Color;
+import luxe.Particles;
+import luxe.options.ParticleOptions;
 import phoenix.Texture;
 import luxe.components.sprite.SpriteAnimation;
 
@@ -15,15 +16,18 @@ class GraphicsComponent extends Component {
 
 	var sprite : Sprite;
 
+	var particles:ParticleSystem;
+	var emitter:ParticleEmitter;
+
 	override function onadded() {
 		sprite = cast entity;
 
 
 			//load the image
-		image = Luxe.loadTexture('assets/characters/notlink.png');
+		image = Luxe.resources.texture('assets/characters/notlink.png');
 
 			//keep pixels crisp
-		image.filter = FilterType.nearest;
+		image.filter_min = image.filter_mag = FilterType.nearest;
 
 			//work out the correct size based on a ratio with the screen size
 		var pixelRatio = 4;
@@ -32,32 +36,67 @@ class GraphicsComponent extends Component {
 		var width = frame_width * pixelRatio;
 
 		sprite.texture = image;
-		sprite.pos = new Vector(Luxe.screen.mid.x, Luxe.screen.mid.y);
-		sprite.size = new Vector(width, height);
+		//sprite.pos = new Vector(Luxe.screen.mid.x, Luxe.screen.mid.y);
+		//sprite.size = new Vector(width, height);
 
+		sprite.pos = new Vector(300, 200);
+		sprite.size = new Vector(width, height);
+		sprite.depth = 1;
 			//create the animation from a simple json string,
 			//the frameset structure allows us to specify things like
 			//"animate frames 1-3 and then hold for 2 frames" etc.
-		var anim_object = Luxe.resources.find_json('assets/anim.json');
+		var anim_object = Luxe.resources.json('assets/anim.json');
 
 			//create the animation component and add it to the sprite
 		anim = sprite.add( new SpriteAnimation({ name:'anim' }) );
 
 			//create the animations from the json
-		anim.add_from_json_object( anim_object.json );
+		anim.add_from_json_object( anim_object.asset.json );
 
 			//set the idle animation to active
 		anim.animation = 'walkup';
 		anim.play();
 
-
+		particles = new ParticleSystem({name: 'attackparticles'});
+		var template:ParticleEmitterOptions = {
+			name: 'particleemitter',
+			group: 5,
+			emit_time: 0.2,
+			emit_count: 3,
+			direction: 0,
+			direction_random: 297,
+			speed: 2.4,
+			speed_random: 0,
+			end_speed: 0,
+			life: 0.9,
+			life_random: 0,
+			rotation: 40,
+			rotation_random: 130,
+			end_rotation: 0,
+			end_rotation_random: 0,
+			rotation_offset: 0,
+			pos_offset: new Vector(0, 0),
+			pos_random: new Vector(5, 5),
+			gravity: new Vector(0, -90),
+			start_size: new Vector(32, 32),
+			start_size_random: new Vector(0, 0),
+			end_size: new Vector(8, 8),
+			end_size_random: new Vector(0, 0),
+			start_color: new ColorHSV(180, 1, 0.5, 1),
+			end_color: new ColorHSV(159, 1, 0.5, 1),
+			depth : 2
+		}
+		particles.add_emitter(template);
+		emitter = particles.get('particleemitter');
+		emitter.init();
+		emitter.stop();
 
 	}
 
 	override function update( dt:Float ) {
 		var moving = entity.get('playerInputComp').moving;
-
-
+		var slashing = entity.get('playerInputComp').slashing;
+		
 
 		//set the correct animation
 
@@ -82,6 +121,12 @@ class GraphicsComponent extends Component {
 					anim.stop();
 			}
 		}
+
+		if (slashing){
+		particles.pos = sprite.pos;
+		emitter.start(.2);
+		}
+
 	} //update
 
 }

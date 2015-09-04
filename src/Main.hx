@@ -25,33 +25,37 @@ class Main extends luxe.Game {
 
 	override function ready() {
 
-		Luxe.loadJSON('assets/parcel.json', function(json_asset) {
+		//create a parcel that preloads the package
 
-			//then create a parcel to load it for us
-			var preload = new Parcel();
-				preload.from_json(json_asset.json);
+		var preload = new Parcel({
+	        jsons:[ { id:'assets/anim.json' },
+	        { id:'assets/particles.json' } ],
+	        textures : [
+	            { id: 'assets/characters/notlink.png' }
+	        ],
+        });
 
-			//but, we also want a progress bar for the parcel,
-			//this is a default one, you can do your own
-			new ParcelProgress({
-				parcel      : preload,
-				background  : new Color(1,1,1,0.85),
-				oncomplete  : assets_loaded
-			});
 
-			//go!
-			preload.load();
+
+			//progress bar for preloading parcel
+		new ParcelProgress({
+			parcel      : preload,
+			background  : new Color(1,1,1,0.85),
+			oncomplete  : assets_loaded
 		});
+
+
+		preload.load();
 
 	} //ready
 
 	//called when assets are done loading
 	function assets_loaded(_) {
-		image = Luxe.loadTexture('assets/characters/notlink.png');
+		image = Luxe.resources.texture('assets/characters/notlink.png');
 		player = new Sprite({
                 name : "playerSprite",
 				texture : image,
-				pos : new Vector( Luxe.screen.w/2, Luxe.screen.h/2 ),
+				pos : new Vector( 300, 200),
 				size : new Vector(192,192)
 			});
 		//create_player();
