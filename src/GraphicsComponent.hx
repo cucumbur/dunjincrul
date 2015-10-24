@@ -60,7 +60,6 @@ class GraphicsComponent extends Component {
 		particles = new ParticleSystem({name: 'attackparticles'});
 		var template:ParticleEmitterOptions = {
 			name: 'particleemitter',
-			group: 5,
 			emit_time: 0.2,
 			emit_count: 3,
 			direction: 0,

@@ -84,6 +84,7 @@ class InputComponent extends Component {
 			moving = 0;
 		} // when not moving
 
+		pos = pos;
 	} //update
 
 	private function setupStateMachine(){
